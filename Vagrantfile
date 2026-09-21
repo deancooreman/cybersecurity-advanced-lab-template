@@ -17,6 +17,9 @@ Vagrant.configure("2") do |config|
         end
 
         host.vm.provision "shell", inline: <<-SHELL
+            # Unlock vagrant SSH user
+            sudo passwd -u vagrant
+
             # Default gateway
             nmcli connection modify "System eth1" ipv4.gateway 192.168.62.254
             systemctl restart NetworkManager
@@ -58,6 +61,9 @@ Vagrant.configure("2") do |config|
         end
 
         host.vm.provision "shell", inline: <<-SHELL
+            # Unlock vagrant SSH user
+            sudo passwd -u vagrant
+
             # Default gateway
             nmcli connection modify "System eth1" ipv4.gateway 172.30.255.254
             systemctl restart NetworkManager
@@ -141,6 +147,9 @@ Vagrant.configure("2") do |config|
         end
 
         host.vm.provision "shell", inline: <<-SHELL
+            # Unlock vagrant SSH user
+            sudo passwd -u vagrant
+
             # Default gateway
             nmcli connection modify "System eth1" ipv4.gateway 192.168.62.254
             systemctl restart NetworkManager
@@ -160,6 +169,9 @@ Vagrant.configure("2") do |config|
         end
 
         host.vm.provision "shell", inline: <<-SHELL
+            # Unlock vagrant SSH user
+            sudo passwd -u vagrant
+
             # Default gateway
             nmcli connection modify "System eth1" ipv4.gateway 172.10.10.254
             systemctl restart NetworkManager

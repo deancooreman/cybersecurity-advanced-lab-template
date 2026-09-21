@@ -13,7 +13,7 @@ The network consists of 4 subnets:
 
 <!--
 ```puml
-@startuml
+@startnwdiag
 nwdiag {
     network internal_company_lan {
         address = 172.30.0.0/16;
@@ -52,7 +52,7 @@ nwdiag {
     real_internet [ shape = cloud];
     virtualbox_nat_gateway -- real_internet;
 }
-@enduml
+@endnwdiag
 ```
 -->
 
@@ -64,14 +64,14 @@ nwdiag {
 
     - Name: `vboxnet1` (when different, for example on Windows: "VirtualBox Host-Only Ethernet Adapter #2", change this in the [`Vagrantfile`](./Vagrantfile))
     - IP range: 192.168.62.0/24
-  
-    ⚠️ Linux users, read https://www.virtualbox.org/manual/ch06.html#network_hostonly to allow this IP range!
+
+    :warning: Linux users, read https://www.virtualbox.org/manual/ch06.html#network_hostonly to allow this IP range!
 
 2. Make sure your vagrant boxes are up to date: `vagrant box update`
 
 3. `vagrant up --parallel` or go slowly (1 by 1) and do `vagrant up <vm_name>`
 
-4. Disable all the NAT connections added by vagrant: `python ./disable-nat.py`
+4. Disable all the NAT connections added by vagrant: `python disable-nat.py`
 
     :warning: `vagrant ssh` won't work anymore and that is **by design**! This command is also not available in a real network, so learn to use SSH properly: login into the required hosts using SSH with IP addresses and jump/forward options!
 
@@ -92,7 +92,7 @@ nwdiag {
 
     ```bash
     isprouter:~$ cd ansible/
-    isprouter:~/ansible$ find . -type f -not -path "./files/web/app.jar" -print0 | xargs -0 dos2unix
+    isprouter:~/ansible$ find . -type f -not -path "./files/web/app.jar" -print0 | xargs -0 dos2unix # Only for Windows users.
     isprouter:~/ansible$ chmod u+x run-on-isprouter.sh
     isprouter:~/ansible$ sudo ./run-on-isprouter.sh
     ...
@@ -101,4 +101,4 @@ nwdiag {
     isprouter:~/ansible$ sudo ansible-playbook --inventory inventory.yml check.yml
     ```
 
-    :bulb: We have added `dos2unix` here for Windows users, but why do they need this? Tip: Linux users don't need this. Tip2: `\r\n` vs. `\n`.
+    :bulb: We have added `dos2unix` here for Windows users, but why do they need this? Tip: Linux users don't need this. Tip 2: `\r\n` vs. `\n`.
