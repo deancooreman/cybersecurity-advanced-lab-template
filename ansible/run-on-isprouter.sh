@@ -3,7 +3,7 @@
 apk add git ansible-core sshpass
 ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
-ansible-galaxy collection install community.mysql
+ansible-galaxy collection install ansible.mariadb
 ansible-playbook --inventory inventory.yml routing.yml
 service network restart
 ansible-playbook --inventory inventory.yml alpine-reboot-fix.yml

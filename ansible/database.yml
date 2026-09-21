@@ -7,7 +7,7 @@
     db_user_password: summer
     db_name: db_services
   tasks:
-    - name: Install mysql, client and python connection library
+    - name: Install mariadb, client and python connection library
       ansible.builtin.package:
         name:
           - mariadb
@@ -15,7 +15,7 @@
           - py3-pymysql
         state: present
 
-    - name: Copy mysql configuration
+    - name: Copy mariadb configuration
       ansible.builtin.copy:
         src: ./files/database/etc/mariadb-server.cnf
         dest: /etc/my.cnf.d/mariadb-server.cnf
@@ -35,7 +35,7 @@
         mariadb -u root -p{{ root_password }} -e "FLUSH PRIVILEGES;"
 
     - name: "create new user {{ db_user }}"
-      community.mysql.mysql_user:
+      ansible.mariadb.mariadb_user:
         name: "{{ db_user }}"
         password: "{{ db_user_password }}"
         host: "%"
@@ -45,7 +45,7 @@
         login_password: "{{ root_password }}"
 
     - name: create new database services
-      community.mysql.mysql_db:
+      ansible.mariadb.mariadb_db:
         name: "{{ db_name }}"
         state: present
         login_user: root

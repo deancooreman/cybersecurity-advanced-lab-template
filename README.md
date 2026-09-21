@@ -6,10 +6,10 @@ This environment is used to build up the lab set-up. It provides the base networ
 
 The network consists of 4 subnets:
 
--   172.30.0.0/16: **internal company LAN**.
--   192.168.62.254/24: **fake internet**.
--   172.10.10.0/24: **employee home LAN**.
--   10.0.2.0/24: **VirtualBox NAT network**.
+- 172.30.0.0/16: **internal company LAN**.
+- 192.168.62.254/24: **fake internet**.
+- 172.10.10.0/24: **employee home LAN**.
+- 10.0.2.0/24: **VirtualBox NAT network**.
 
 <!--
 ```puml
@@ -56,12 +56,11 @@ nwdiag {
 ```
 -->
 
-![](https://www.plantuml.com/plantuml/svg/VPBXRi8W4CU_zob8lzjPj6wBMU9xc8MSSjD62WJekcRntOUPeXWAsc-__t7yxZRMWN5z9mevy1OEvBSW_aXqWp8dqag7He9WUzLfa2CJ8A_8vG3d1gqb7wH-fTLYNldVIxrQ5u6uvepgVI6olGVAQu8sZV-MvUSwPBYqAN9UHTI0kpHLpwDYu6075YVOvf75JWiruXHB5pVuN4IMlk24x5yLkgIUidwdLRrwgrRK6wBBCgCe6QBDuh7Jrkei_wnqLBrX0hHJEahmuru_SaVLORxmagOb17diKYEv9q5dxNK63Rch0-__pqyos2c7x7PjCfGRsdThN0zYftwOXAcfNHeD4ylQ3t2yKl4jx00E1nXJEPg9SMbJaUUd6GHntyCjiKVGwFczK3ttQAQXsInEhujpiK79-qxy0G00)
+![](https://www.plantuml.com/plantuml/png/VPJHRi8W58Rl-nIaztOMhTjYblWUPY57ETD62WJekcRntOUhLZ4KjEdDzn_WEoVTM0V6oOxNSCY65_dDY5yINQVCYTJIeP4Ws5ur6cJF1CX_P5Z0kK5hoGSfNscnc1V-zrAkrjb8N7D6jRuGsTu3-JL1gye_o_npFMQuj35oNWHKXxiuLSw3Ok1W1nOdsEgHnKOBrUCKInSt-9m5bhxWX6nGXIwg9o_VQL6kteeLzOReCayeYePejNWyQMrradzMsglMC07QAHqa-76l7xcZQZ1TU4dZ4aPvx58ZEYUZpjBhl6j8Rptm_lzy9OEDSiXksyP3YQPzryQr87RgXqcOwjhbe6F7alP7E1ofS1Ts08STzB4SJSIujB78yzKCWhZFuPRO8sZq_5webdiqSQ3PB4olitEsGSc7hy8V)
 
 ## Usage
 
 1. Create the following host-only network in VirtualBox to simulate the the fake internet:
-
     - Name: `vboxnet1` (when different, for example on Windows: "VirtualBox Host-Only Ethernet Adapter #2", change this in the [`Vagrantfile`](./Vagrantfile))
     - IP range: 192.168.62.0/24
 
@@ -84,7 +83,6 @@ nwdiag {
     :bulb: It could be that you have to wait a minute until the isprouter VM has booted and accepts SSH requests.
 
     :bulb: Vagrant boxes often use the following credentials:
-
     - username: `vagrant`
     - password: `vagrant`
 
