@@ -1,6 +1,6 @@
 
-#HOST_ONLY_NETWORK = "vboxnet1" # Typically on Linux/Mac
-HOST_ONLY_NETWORK = "VirtualBox Host-Only Ethernet Adapter #2" # Typically on Windows
+# "VirtualBox Host-Only Ethernet Adapter #2" on Windows, "vboxnet1" on Linux/Mac
+HOST_ONLY_NETWORK = Vagrant::Util::Platform.windows? ? "VirtualBox Host-Only Ethernet Adapter #2" : "vboxnet1"
 
 Vagrant.configure("2") do |config|
     config.vm.define "companyrouter" do |host|
